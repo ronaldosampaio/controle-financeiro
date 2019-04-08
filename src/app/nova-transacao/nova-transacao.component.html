@@ -1,0 +1,52 @@
+<br>
+<div class="row nova-transacao col s12 col m12 col l6 col xl6">
+  <h5 class="center-align">Nova Transação</h5><br>
+  <form #f="ngForm" (ngSubmit)="setLocalStorageTransacao(f)">
+      <div class="validate input-field">
+        <select name="transacao" ngModel>
+          <option value="" disabled>Escolha uma opção</option>
+            <option>Compra</option>
+            <option>Venda</option>
+          </select>
+          <label>Tipo de transação</label>
+      </div>
+
+      <div class="input-field">
+        <input id="nome" type="text" class="validate" name="nome" ngModel required>
+        <label class="active" for="nome">Nome da Mercadoria</label>
+      </div>
+
+      <div class="input-field">
+        <input id="valor" type="text" class="validate" name="valor" ngModel required>
+        <label class="active" for="valor">Valor</label>
+      </div>
+      
+      <button type="submit" 
+              class="btn btn-small" 
+              name="adicionar-transacao">
+              Adicionar transação
+      </button>
+  </form><br>
+</div>
+
+
+<!--<app-extrato-transacao></app-extrato-transacao>-->
+
+<div class="extrato-transacao col s12 col m12 col l6 col xl6">
+    
+    <h5 class="center-align">Extrato de transações</h5>
+
+    <div class="col s12">
+       <h6 class="col s10">Mercadoria</h6>
+       <h6 class="col s2">Valor</h6>
+    </div>
+
+    <div>
+        <ul *ngFor="let retorno of retornoObj" class="collection">
+             <li class="collection-item">{{retorno.nome}}<span class="badge">{{retorno.valor}}</span></li>
+        </ul>
+       <h6 class="col s10">Total</h6>
+       <h6 class="col s2">{{total}}<br><span>[Lucro]</span></h6>
+       
+    </div>
+</div>
